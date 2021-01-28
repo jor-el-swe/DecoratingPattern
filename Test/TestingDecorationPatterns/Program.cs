@@ -9,7 +9,7 @@ namespace TestingDecorationPatterns
         {
             var rand = new Random();
             IWeapon newWeapon;
-            switch (rand.Next(2)) {
+            switch (rand.Next(6)) {
                 case 0:
                     newWeapon = new Sword();
                     break;
@@ -18,29 +18,68 @@ namespace TestingDecorationPatterns
                     newWeapon = new Knife();
                     break;
                 
+                case 2:
+                    newWeapon = new Dagger();
+                    break;
+                
+                case 3:
+                    newWeapon = new Mace();
+                    break;
+                
+                case 4:
+                    newWeapon = new Axe();
+                    break;
+                
+                case 5:
+                    newWeapon = new Staff();
+                    break;
+                
                 default:
                     newWeapon = new Sword();
                     break;
             }
-            switch (rand.Next(4)) {
+
+            switch (rand.Next(15)) {
                 case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    break;
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
                     newWeapon = new UncommonDecorator(newWeapon);
                     break;
-	
-                case 1:
+                case 10:
+                case 11:
                     newWeapon = new RareDecorator(newWeapon);
                     break;
-                
-                case 2:
+                case 12:
+                case 13:
                     newWeapon = new EpicDecorator(newWeapon);
                     break;
-	
-                case 3:
+                case 14:
                     newWeapon = new LegendaryDecorator(newWeapon);
                     break;
-                
-                default:
-                    newWeapon = new UncommonDecorator(newWeapon);
+            }
+            
+            switch (rand.Next(5)) {
+                case 0:
+                    break;
+                case 1:
+                    newWeapon = new PoisonousDecorator(newWeapon);
+                    break;
+                case 2:
+                    newWeapon = new FrozenDecorator(newWeapon);
+                    break;
+                case 3:
+                    newWeapon = new FuriousDecorator(newWeapon);
+                    break;
+                case 4:
+                    newWeapon = new PatientDecorator(newWeapon);
                     break;
             }
             
@@ -107,7 +146,7 @@ namespace TestingDecorationPatterns
 
         public string GetName()
         {
-            return "Bane of All Banes";
+            return "Le Baguette";
         }
 
         public string GetWeaponType()
@@ -152,9 +191,180 @@ namespace TestingDecorationPatterns
         {
             return "Bread Sticker";
         }
+
         public string GetWeaponType()
         {
             return "Knife";
+        }
+    }
+
+    public class Dagger : IWeapon
+    {
+        public float GetGold()
+        {
+            return 5;
+        }
+
+        public float GetStrengthBuff()
+        {
+            return 5;
+        }
+
+        public float GetAgilityBuff()
+        {
+            return 10;
+        }
+
+        public float GetIntelligenceBuff()
+        {
+            return 1;
+        }
+
+        public float GetAttackSpeed()
+        {
+            return 20;
+        }
+
+        public float GetDamage()
+        {
+            return 10;
+        }
+
+        public string GetName()
+        {
+            return "Toothpick";
+        }
+
+        public string GetWeaponType()
+        {
+            return "Dagger";
+        }
+    }
+
+    public class Mace : IWeapon {
+        public float GetGold()
+        {
+            return 10;
+        }
+
+        public float GetStrengthBuff()
+        {
+            return 15;
+        }
+
+        public float GetAgilityBuff()
+        {
+            return 5;
+        }
+
+        public float GetIntelligenceBuff()
+        {
+            return 1;
+        }
+
+        public float GetAttackSpeed()
+        {
+            return 10;
+        }
+
+        public float GetDamage()
+        {
+            return 15;
+        }
+
+        public string GetName()
+        {
+            return "Lollipop";
+        }
+        public string GetWeaponType()
+        {
+            return "Mace";
+        }
+    }
+
+    public class Axe : IWeapon
+    {
+        public float GetGold()
+        {
+            return 10;
+        }
+
+        public float GetStrengthBuff()
+        {
+            return 15;
+        }
+
+        public float GetAgilityBuff()
+        {
+            return 10;
+        }
+
+        public float GetIntelligenceBuff()
+        {
+            return 1;
+        }
+
+        public float GetAttackSpeed()
+        {
+            return 5;
+        }
+
+        public float GetDamage()
+        {
+            return 15;
+        }
+
+        public string GetName()
+        {
+            return "T-Bone";
+        }
+
+        public string GetWeaponType()
+        {
+            return "Axe";
+        }
+    }
+
+    public class Staff : IWeapon
+    {
+        public float GetGold()
+        {
+            return 10;
+        }
+
+        public float GetStrengthBuff()
+        {
+            return 1;
+        }
+
+        public float GetAgilityBuff()
+        {
+            return 1;
+        }
+
+        public float GetIntelligenceBuff()
+        {
+            return 15;
+        }
+
+        public float GetAttackSpeed()
+        {
+            return 5;
+        }
+
+        public float GetDamage()
+        {
+            return 15;
+        }
+
+        public string GetName()
+        {
+            return "Spaghetti";
+        }
+
+        public string GetWeaponType()
+        {
+            return "Staff";
         }
     }
 
@@ -383,6 +593,221 @@ namespace TestingDecorationPatterns
             return this.weapon.GetWeaponType();
         }
     }
+    
+    public abstract class ModDecorator : IWeapon
+    {
+        protected readonly IWeapon weapon;
+
+        public ModDecorator(IWeapon weapon)
+        {
+            this.weapon = weapon;
+        }
+
+        public abstract float GetGold();
+        public abstract float GetStrengthBuff();
+
+        public abstract float GetAgilityBuff();
+
+        public abstract float GetIntelligenceBuff();
+
+        public abstract float GetAttackSpeed();
+
+        public abstract float GetDamage();
+
+        public abstract string GetName();
+
+        public abstract string GetWeaponType();
+    }
+    
+    public class PoisonousDecorator : ModDecorator
+    {
+        //Poisonous: Increases 10% Chance to poison the enemy + 15g
+        public PoisonousDecorator(IWeapon weapon) : base(weapon)
+        {
+        }
+
+        public override float GetGold()
+        {
+            return this.weapon.GetGold() + 15;
+        }
+
+        public override float GetStrengthBuff()
+        {
+            return this.weapon.GetStrengthBuff();
+        }
+
+        public override float GetAgilityBuff()
+        {
+            return this.weapon.GetAgilityBuff();
+        }
+
+        public override float GetIntelligenceBuff()
+        {
+            return this.weapon.GetIntelligenceBuff();
+        }
+
+        public override float GetAttackSpeed()
+        {
+            return this.weapon.GetAttackSpeed();
+        }
+        
+        public override float GetDamage()
+        {
+            return this.weapon.GetDamage();
+        }
+
+        public override string GetName()
+        {
+            return "Poisonous " + this.weapon.GetName();
+        }
+
+        public override string GetWeaponType()
+        {
+            return this.weapon.GetWeaponType();
+        }
+    }
+    
+    public class FrozenDecorator : ModDecorator
+    {
+        //Frozen: Increases 10% chance to freeze the enemy + 20g
+        public FrozenDecorator(IWeapon weapon) : base(weapon)
+        {
+        }
+
+        public override float GetGold()
+        {
+            return this.weapon.GetGold() + 20;
+        }
+
+        public override float GetStrengthBuff()
+        {
+            return this.weapon.GetStrengthBuff();
+        }
+
+        public override float GetAgilityBuff()
+        {
+            return this.weapon.GetAgilityBuff();
+        }
+
+        public override float GetIntelligenceBuff()
+        {
+            return this.weapon.GetIntelligenceBuff();
+        }
+
+        public override float GetAttackSpeed()
+        {
+            return this.weapon.GetAttackSpeed();
+        }
+        
+        public override float GetDamage()
+        {
+            return this.weapon.GetDamage();
+        }
+
+        public override string GetName()
+        {
+            return "Frozen " + this.weapon.GetName();
+        }
+
+        public override string GetWeaponType()
+        {
+            return this.weapon.GetWeaponType();
+        }
+    }
+    
+    public class FuriousDecorator : ModDecorator
+    {
+        //Furious: Increases the Attack Damage and Speed by 5% + 10g
+        public FuriousDecorator(IWeapon weapon) : base(weapon)
+        {
+        }
+
+        public override float GetGold()
+        {
+            return this.weapon.GetGold() + 10;
+        }
+
+        public override float GetStrengthBuff()
+        {
+            return this.weapon.GetStrengthBuff();
+        }
+
+        public override float GetAgilityBuff()
+        {
+            return this.weapon.GetAgilityBuff();
+        }
+
+        public override float GetIntelligenceBuff()
+        {
+            return this.weapon.GetIntelligenceBuff();
+        }
+
+        public override float GetAttackSpeed()
+        {
+            return this.weapon.GetAttackSpeed() * 0.5f;
+        }
+        
+        public override float GetDamage()
+        {
+            return this.weapon.GetDamage() * 0.5f;
+        }
+
+        public override string GetName()
+        {
+            return "Furious " + this.weapon.GetName();
+        }
+
+        public override string GetWeaponType()
+        {
+            return this.weapon.GetWeaponType();
+        }
+    }
+    
+    public class PatientDecorator : ModDecorator
+    {
+        //Patient: Increases Attack Damage by 15%, reduces Attack Speed by 2% +20g
+        public PatientDecorator(IWeapon weapon) : base(weapon)
+        {
+        }
+
+        public override float GetGold()
+        {
+            return this.weapon.GetGold() + 20;
+        }
+
+        public override float GetStrengthBuff()
+        {
+            return this.weapon.GetStrengthBuff();
+        }
+
+        public override float GetAgilityBuff()
+        {
+            return this.weapon.GetAgilityBuff();
+        }
+
+        public override float GetIntelligenceBuff()
+        {
+            return this.weapon.GetIntelligenceBuff();
+        }
+
+        public override float GetAttackSpeed()
+        {
+            return this.weapon.GetAttackSpeed() / 0.5f;
+        }
+        
+        public override float GetDamage()
+        {
+            return this.weapon.GetDamage() * 1.5f;
+        }
+
+        public override string GetName()
+        {
+            return "Patient " + this.weapon.GetName();
+        }
+
+        public override string GetWeaponType()
+        {
+            return this.weapon.GetWeaponType();
+        }
+    }
 }
-    
-    
