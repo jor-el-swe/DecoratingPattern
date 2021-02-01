@@ -65,6 +65,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/bin/
+/obj/
 
 .DS_Store
 .idea

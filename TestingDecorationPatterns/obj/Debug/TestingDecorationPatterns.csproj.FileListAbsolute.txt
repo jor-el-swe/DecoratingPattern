@@ -1,0 +1,6 @@
+D:\UnityDevelopment\Projects\DecoratingPattern\TestingDecorationPatterns\bin\Debug\TestingDecorationPatterns.exe
+D:\UnityDevelopment\Projects\DecoratingPattern\TestingDecorationPatterns\bin\Debug\TestingDecorationPatterns.pdb
+D:\UnityDevelopment\Projects\DecoratingPattern\TestingDecorationPatterns\obj\Debug\TestingDecorationPatterns.csprojResolveAssemblyReference.cache
+D:\UnityDevelopment\Projects\DecoratingPattern\TestingDecorationPatterns\obj\Debug\TestingDecorationPatterns.csproj.CoreCompileInputs.cache
+D:\UnityDevelopment\Projects\DecoratingPattern\TestingDecorationPatterns\obj\Debug\TestingDecorationPatterns.exe
+D:\UnityDevelopment\Projects\DecoratingPattern\TestingDecorationPatterns\obj\Debug\TestingDecorationPatterns.pdb
