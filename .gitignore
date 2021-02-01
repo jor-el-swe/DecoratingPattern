@@ -10,6 +10,19 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+# Packed Addressables
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata//.bin*
+
+# Temporary auto-generated Android Assets
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+.idea
+[Ii]dea
+/[Ii]dea
+/.idea/
+/WebGL Builds/
+
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 
@@ -59,3 +72,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+.DS_Store
+ProjectSettings/VersionControlSettings.asset
+ProjectSettings/VersionControlSettings.asset
+.vscode/settings.json
